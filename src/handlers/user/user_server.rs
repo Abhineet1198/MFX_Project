@@ -44,7 +44,6 @@ impl UserService for MyUserService {
         .fetch_optional(&*self.db_pool)
         .await
         .map_err(|e| Status::internal(format!("Database error: {:?}", e)))?;
-
         if existing_user.is_some() {
             return Err(Status::already_exists("Username, Email, or Mobile Number already exists"));
         }
@@ -127,7 +126,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let user_service = MyUserService { db_pool };
 
-    let addr = "[::1]:50051".parse()?;
+    let addr = "127.0.0.1:50051".parse()?; 
     println!("gRPC Server running on {}", addr);
 
     Server::builder()

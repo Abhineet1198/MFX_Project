@@ -13,7 +13,7 @@ services:
         POSTGRES_PASSWORD: 'admin' # no need for password if we set POSTGRES_HOST_AUTH_METHOD is 'trust'
         POSTGRES_USER: 'admin'
     ports:
-      - 5433:5432
+      - 5435:5432
     volumes:
       - ./postgres-db-data:/var/lib/postgresql/data/
   pgAdmin:

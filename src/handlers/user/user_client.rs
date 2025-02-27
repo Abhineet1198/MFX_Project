@@ -32,7 +32,7 @@ struct UserInput {
 
 // gRPC Client Function to create a user
 async fn send_to_grpc(user: UserInput) -> Result<SerializableUserResponse, Box<dyn std::error::Error>> {
-    let mut client = UserServiceClient::connect("http://[::1]:50051").await?;
+    let mut client = UserServiceClient::connect("http://127.0.0.1:50051").await?;
 
     let request = tonic::Request::new(UserRequest {
         username: user.username.clone(),
